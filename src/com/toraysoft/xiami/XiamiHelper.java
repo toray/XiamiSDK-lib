@@ -13,13 +13,20 @@ public class XiamiHelper {
 
 	XiamiSDK mXiamiSDK;
 
-	private XiamiHelper(Context context) {
-		mXiamiSDK = new XiamiSDK(context, KEY, SECRET);
+	private XiamiHelper(Context context, String key, String secret) {
+		mXiamiSDK = new XiamiSDK(context, key, secret);
 	}
 
 	public static XiamiHelper get(Context context) {
 		if (instance == null) {
-			instance = new XiamiHelper(context);
+			instance = new XiamiHelper(context, KEY, SECRET);
+		}
+		return instance;
+	}
+
+	public static XiamiHelper get(Context context, String key, String secret) {
+		if (instance == null) {
+			instance = new XiamiHelper(context, key, secret);
 		}
 		return instance;
 	}
